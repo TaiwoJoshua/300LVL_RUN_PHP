@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./assets/img/redeemer's icon.jfif">
+    <link rel="stylesheet" href="./assets/css/welcome.css">
+    <title>ENGINEERING 300LVL R.U.N</title>
+</head>
+<body>
+    <div class="pagewrapper animate__animated animate__slower" id="pagewrapper">
+        <div id="navbar">
+            <h1>
+                RUN 300LVL ENGINEERING
+            </h1>
+        </div>
+        <div class="formwrapper">
+            <div class="form">
+                <div class="welcome">
+                    <h1>
+                        WELCOME
+                    </h1>
+                </div>
+                <form id="form" method="post">
+                    <div>
+                        Input your matric number to proceed
+                    </div><br>
+                    <input type="text" id="matric" required name="matric" placeholder="Your Matric No. here...">
+                    <i id="empty">Please input your matric number</i>
+                    <i id="incorrect">Invalid Matric No. Try again</i>
+                    <input type="password" name="password" id="password" placeholder="Your Password here...">
+                    <div id="showwrapper">
+                        <div>
+                            <i id="pincorrect">Incorrect Password</i>
+                        </div>
+                        <div>
+                            <input type="checkbox" onclick="myFunction()">
+                            <label>Show Password</label>
+                        </div>
+                    </div>
+                    <center>
+                        <input type="submit" value="submit" name="submit" id="submit">
+                    </center>
+                    <div id="alogin">Admin Login</div>
+                    <div id="slogin">Student Login</div>
+                </form>
+            </div>
+        </div>
+        <p id="maintain">This project was built and is being maintained by <a href="https://taiwojoshua.netlify.app/" target="_blank"><strong>Taiwo Joshua</strong></a></p>
+    </div>
+    <script src="./assets/js/jquery.js"></script>
+    <script src="./assets/js/index.js"></script>
+</body>
+</html>

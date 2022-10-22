@@ -1,0 +1,322 @@
+body{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    width: 100%;
+    color: black;
+    background-color: rgb(242, 242, 242);
+    font-family: Arial, Helvetica, sans-serif;
+}
+body::-webkit-scrollbar{
+    width: 0.5em;
+}
+body::-webkit-scrollbar-track{
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background: white;
+}
+body::-webkit-scrollbar-thumb{
+    background-color: black;
+    border: 0.5px solid rgb(242, 242, 242);
+}
+:root{
+    scrollbar-color: black white;
+    scrollbar-width: thin;
+}
+h1, h2, h3, h4{
+    text-align: center;
+}
+.pagewrapper{
+    width: 100%;
+    max-width: 100vw;
+    height: auto;
+    box-sizing: border-box;
+    padding-bottom: 15px;
+}
+.pagewrapper>p>a{
+    text-decoration: none;
+    color: inherit;
+    font-weight: bolder
+}
+.view{
+    width: 100%;
+    height: 100vh;
+    min-height: 620px;
+    max-height: 650px;
+    box-sizing: border-box;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* -------------------------------------- Navbar Section Starts Here -------------------------------------- */
+#navbar{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 10px 0;
+    background-color: rgb(230, 230, 230, 0.4);
+    color: white;
+}
+#navbar>h1{
+    margin: 0;
+}
+
+/* -------------------------------------- Next Section Starts Here -------------------------------------- */
+.here{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    box-sizing: border-box;
+}
+#next{
+    position: relative;
+    top: 50px;
+}
+
+/* -------------------------------------- Timer Section Starts Here -------------------------------------- */
+.count{
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+.count>h3{
+    padding: 20px;
+}
+.container{
+    width: 80%;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: center;
+    color: white;
+    box-sizing: border-box;
+    font-size: 4rem;
+}
+.flip-card {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .2);
+    border-radius: .1em;
+}
+.top,
+.bottom,
+.flip-card .top-flip,
+.flip-card .bottom-flip {
+    height: .25em;
+    line-height: 1;
+    padding: .25em;
+    overflow: hidden;
+}
+.top,
+.flip-card .top-flip {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-top-right-radius: .1em;
+    border-top-left-radius: .1em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.bottom,
+.flip-card .bottom-flip {
+    background-color: rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: flex-end;
+    border-bottom-right-radius: .1em;
+    border-bottom-left-radius: .1em;
+}
+.flip-card .top-flip {
+    position: absolute;
+    width: 50%;
+    animation: flip-top 250ms ease-in;
+    transform-origin: bottom;
+}
+@keyframes flip-top {
+    100% {
+      transform: rotateX(90deg);
+    }
+}
+.flip-card .bottom-flip {
+    position: absolute;
+    bottom: 0;
+    width: 50%;
+    animation: flip-bottom 250ms ease-out 250ms;
+    transform-origin: top;
+    transform: rotateX(90deg);
+}
+@keyframes flip-bottom {
+    100% {
+      transform: rotateX(0deg);
+    }
+}
+.container {
+    display: flex;
+    gap: .5em;
+    justify-content: center;
+}
+.container-segment {
+    display: flex;
+    flex-direction: column;
+    gap: .1em;
+    align-items: center;
+}
+.segment {
+    display: flex;
+    gap: .1em;
+}
+.segment-title {
+    font-size: 1rem;
+}
+
+/* -------------------------------------- Time Table for Today Section Starts Here -------------------------------------- */
+.class{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+}
+tr{
+    display: grid;
+    grid-template-columns: repeat(11, 100px);
+    padding: 15px;
+    grid-gap: 1.5em;
+}
+table, th, td {
+    text-align: center;
+}
+
+/* -------------------------------------- Time-Table Section Starts Here -------------------------------------- */
+.timetable{
+    width: 100%;
+    height: auto;
+}
+.timetablecontent{
+    width: 100%;
+    height: auto;
+}
+.overflow{
+    overflow-x: auto;
+}
+.overflow::-webkit-scrollbar{
+    width: 0.5em;
+}
+.overflow::-webkit-scrollbar-track{
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background: white;
+}
+.overflow::-webkit-scrollbar-thumb{
+    background-color: black;
+    border: 0.5px solid rgb(242, 242, 242);
+}
+#downloadwrapper{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px;
+    box-sizing: border-box;
+}
+.download{
+    color: white;
+    background-color: blue;
+    padding: 10px;
+    border: none;
+    margin-left: 10px;
+    border-radius: 20px;
+}
+.download>a{
+    color: white;
+    text-decoration: none;
+}
+.download:hover{
+    cursor: pointer;
+    background-color: rgb(72, 72, 99);
+}
+
+/* -------------------------------------- Courses Section Starts Here -------------------------------------- */
+.course{
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+}
+.center{
+    text-align: center;
+}
+.bold{
+    font-weight: bolder;
+}
+.coursecontent{
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-row: auto;
+}
+.coursecontent>div{
+    padding: 15px;
+}
+.coursecontent:nth-child(even){
+    background-color: rgb(204, 204, 204);
+}
+
+/* -------------------------------------- Portal Section Starts Here -------------------------------------- */
+.portal{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+.portal>button{
+    padding: 12px;
+    border-radius: 15px;
+    box-sizing: border-box;
+    margin: auto 10px;
+}
+.portal>button>a{
+    text-decoration: none;
+    color: black;
+}
+.background{
+    background-color: rgb(191, 191, 191);
+}
+.background2{
+    background-color: rgb(204, 204, 204);
+}
+#maintain{
+    text-align: center;
+    margin-top: 10px;
+}
+#maintain>a{
+    padding: 5px 10px;
+}
+#maintain>a:hover{
+    background-color: black;
+    color: rgb(242, 242, 242);
+    border-radius: 20px;
+}
+.swal-modal{
+    border: 3px solid gold;
+}
+
+/* ------------------------------ Media Query -------------------------------- */
+@media screen and (max-width: 780px) and (min-width: 320px){
+    #navbar>h1{
+        font-size: 25px;
+    }
+    .class>div>h2, .today>h2, .timetable>h2, .course>h2{
+        font-size: 20px;
+    }
+}
