@@ -50,6 +50,70 @@
     }else{
         header('location: ../index.php');
     }
+
+    // -------------------------------------- Announcement Section Starts Here --------------------------------------
+    $aready = "";
+    $announce = array();
+    $announcement = 'SELECT * FROM cpe_announcement';
+    $res_announcement = $conn->query($announcement);
+    if($res_announcement->num_rows > 0){
+        $i = 0;
+        while($announcerow = $res_announcement->fetch_assoc()){
+            $announce[$i] = $announcerow['info'];
+            $aready = "announce";
+            $i++;
+        }
+    }
+
+    // -------------------------------------- Time-Table Section Starts Here -----------------------------------
+    $tready = "";
+    $period1 = array();
+    $period2 = array();
+    $period3 = array();
+    $period4 = array();
+    $period5 = array();
+    $period6 = array();
+    $period7 = array();
+    $period8 = array();
+    $period9 = array();
+    $period10 = array();
+    $ttable = 'SELECT * FROM cpe_timetable';
+    $res_ttable = $conn->query($ttable);
+    if($res_ttable->num_rows > 0){
+        $i = 0;
+        while($ttablerow = $res_ttable->fetch_assoc()){
+            $period1[$i] = $ttablerow['Period 1'];
+            $period2[$i] = $ttablerow['Period 2'];
+            $period3[$i] = $ttablerow['Period 3'];
+            $period4[$i] = $ttablerow['Period 4'];
+            $period5[$i] = $ttablerow['Period 5'];
+            $period6[$i] = $ttablerow['Period 6'];
+            $period7[$i] = $ttablerow['Period 7'];
+            $period8[$i] = $ttablerow['Period 8'];
+            $period9[$i] = $ttablerow['Period 9'];
+            $period10[$i] = $ttablerow['Period 10'];
+            $tready = "ttable";
+            $i++;
+        }
+    } 
+
+    // -------------------------------------- Courses Section Starts Here --------------------------------------
+    $ready = "";
+    $course_code = array();
+    $course_title = array();
+    $units = array();
+    $ccode = 'SELECT * FROM cpe_courses';
+    $res_ccode = $conn->query($ccode);
+    if($res_ccode->num_rows > 0){
+        $i = 0;
+        while($ccoderow = $res_ccode->fetch_assoc()){
+            $course_code[$i] = $ccoderow['course_code'];
+            $course_title[$i] = $ccoderow['course_title'];
+            $units[$i] = $ccoderow['units'];
+            $ready = "ccode";
+            $i++;
+        }
+    } 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -173,22 +237,7 @@
         <div class="announcement hidden animate__animated animate__slower" id="announcement">
             <h2>Announcement</h2>
             <div>
-                <div>
-                    <textarea class="announce">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium nobis, voluptatum, a consectetur magni iste commodi dolore dolorem rem sint possimus dolor, doloribus eum aliquam quaerat id accusamus et minus.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium nobis, voluptatum, a consectetur magni iste commodi dolore dolorem rem sint possimus dolor, doloribus eum aliquam quaerat id accusamus et minus.</textarea>
-                    <button class="remove download">Remove</button>
-                </div>
-                <div>
-                    <textarea class="announce">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium nobis, voluptatum, a consectetur magni iste commodi dolore dolorem rem sint possimus dolor, doloribus eum aliquam quaerat id accusamus et minus.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium nobis, voluptatum, a consectetur magni iste commodi dolore dolorem rem sint possimus dolor, doloribus eum aliquam quaerat id accusamus et minus.</textarea>
-                    <button class="remove download">Remove</button>
-                </div>
-                <div>
-                    <textarea class="announce">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium nobis, voluptatum, a consectetur magni iste commodi dolore dolorem rem sint possimus dolor, doloribus eum aliquam quaerat id accusamus et minus.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium nobis, voluptatum, a consectetur magni iste commodi dolore dolorem rem sint possimus dolor, doloribus eum aliquam quaerat id accusamus et minus.</textarea>
-                    <button class="remove download">Remove</button>
-                </div>
-                <div>
-                    <textarea class="announce">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium nobis, voluptatum, a consectetur magni iste commodi dolore dolorem rem sint possimus dolor, doloribus eum aliquam quaerat id accusamus et minus.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium nobis, voluptatum, a consectetur magni iste commodi dolore dolorem rem sint possimus dolor, doloribus eum aliquam quaerat id accusamus et minus.</textarea>
-                    <button class="remove download">Remove</button>
-                </div>
+
             </div>
             <div id="add1"><button id="add" class="download update">Add</button><button class="download update">Update</button></div>        
         </div><br>
@@ -218,68 +267,68 @@
                         <tbody id="tablewrapper">
                             <tr class="ttable">
                                 <th>Monday</th>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
                             </tr>
                             <tr class="ttable">
                                 <th>Tuesday</th>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
                             </tr>
                             <tr class="ttable">
                                 <th>Wednesday</th>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
                             </tr>
                             <tr class="ttable">
                                 <th>Thursday</th>
-                                <td><input type="text" value="MEE 205"></td>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
                             </tr>
                             <tr class="ttable">
                                 <th>Friday</th>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 200"></td>
-                                <td><input type="text" value="MEE 202"></td>
-                                <td><input type="text" value="MEE 203"></td>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
-                                <td><input type="text" value="MEE 204"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -303,49 +352,49 @@
         </div>
         <div id="courses" class="hidden animate__animated animate__slower">
             <div class="coursecontent">
-                <div><input type="text" value=""></div>
-                <div><textarea rows="1">COMPUTATION STRUCTURES I</textarea></div>
-                <div><input type="text" value="3"></div>
+                <div><input type="text"></div>
+                <div><textarea rows="1"></textarea></div>
+                <div><input type="text"></div>
             </div>
             <div class="coursecontent">
-                <div><input type="text" value="EEE 313"></div>
-                <div><textarea rows="1">ENGINEERING ANALYSIS I</textarea></div>
-                <div><input type="text" value="3"></div>
+                <div><input type="text"></div>
+                <div><textarea rows="1"></textarea></div>
+                <div><input type="text"></div>
             </div>
             <div class="coursecontent">
-                <div><input type="text" value="CPE 303"></div>
-                <div><textarea rows="1">LOW LEVEL LANGUAGE PROGRAMMING</textarea></div>
-                <div><input type="text" value="3"></div>
+                <div><input type="text"></div>
+                <div><textarea rows="1"></textarea></div>
+                <div><input type="text"></div>
             </div>
             <div class="coursecontent">
-                <div><input type="text" value="EEE 301"></div>
-                <div><textarea rows="1">MICROELECTRONIC DEVICES AND CIRCUITS I</textarea></div>
-                <div><input type="text" value="3"></div>
+                <div><input type="text"></div>
+                <div><textarea rows="1"></textarea></div>
+                <div><input type="text"></div>
             </div>
             <div class="coursecontent">
-                <div><input type="text" value="EEE 309"></div>
-                <div><textarea rows="1">SIGNALS AND SYSTEMS</textarea></div>
-                <div><input type="text" value="3"></div>
+                <div><input type="text"></div>
+                <div><textarea rows="1"></textarea></div>
+                <div><input type="text"></div>
             </div>
             <div class="coursecontent">
-                <div><input type="text" value="CPE 301"></div>
-                <div><textarea rows="1">DIGITAL SYSTEM DESIGN WITH VHDL</textarea></div>
-                <div><input type="text" value="2"></div>
+                <div><input type="text"></div>
+                <div><textarea rows="1"></textarea></div>
+                <div><input type="text"></div>
             </div>
             <div class="coursecontent">
-                <div><input type="text" value="CPE 305"></div>
-                <div><textarea rows="1">DIGITAL SYSTEM DESIGN LABORATORY</textarea></div>
-                <div><input type="text" value="1"></div>
+                <div><input type="text"></div>
+                <div><textarea rows="1"></textarea></div>
+                <div><input type="text"></div>
             </div>
             <div class="coursecontent">
-                <div><input type="text" value="GST 309"></div>
-                <div><textarea rows="1">STUDIES IN LEADERSHIP V</textarea></div>
-                <div><input type="text" value="1"></div>
+                <div><input type="text"></div>
+                <div><textarea rows="1"></textarea></div>
+                <div><input type="text"></div>
             </div>
             <div class="coursecontent">
-                <div><input type="text" value="GIT 303"></div>
-                <div><textarea rows="1">CISCO CERTIFIED NETWORK ASSOCIATE (CCNA) I</textarea></div>
-                <div><input type="text" value="0"></div>
+                <div><input type="text"></div>
+                <div><textarea rows="1"></textarea></div>
+                <div><input type="text"></div>
             </div>
         </div>
         <div id="up">
@@ -365,6 +414,69 @@
     <script src="../assets/js/jquery.js"></script>
     <script src="../assets/js/autosize.min.js"></script>
     <script src="../assets/js/sweetalert.min.js"></script>
+    <script>
+        function announce(){
+            let nannounce = <?php echo $res_announcement->num_rows; ?>;
+            var announce = <?php echo json_encode($announce); ?>;
+            for(i=0; i < nannounce; i++){
+                $("#announcement>div:nth-child(2)").append('<div><textarea class="announce"></textarea><button class="remove download">Remove</button></div>');
+                let announcediv = document.querySelectorAll("#announcement>div:nth-child(2)>div>textarea");
+                announcediv[i].innerText = announce[i];
+            }
+        }
+
+        function ttable(){
+            let nttable = <?php echo $res_ttable->num_rows; ?>;
+            let p1 = document.querySelectorAll("#tablewrapper>tr>td:nth-child(2)>input");
+            let p2 = document.querySelectorAll("#tablewrapper>tr>td:nth-child(3)>input");
+            let p3 = document.querySelectorAll("#tablewrapper>tr>td:nth-child(4)>input");
+            let p4 = document.querySelectorAll("#tablewrapper>tr>td:nth-child(5)>input");
+            let p5 = document.querySelectorAll("#tablewrapper>tr>td:nth-child(6)>input");
+            let p6 = document.querySelectorAll("#tablewrapper>tr>td:nth-child(7)>input");
+            let p7 = document.querySelectorAll("#tablewrapper>tr>td:nth-child(8)>input");
+            let p8 = document.querySelectorAll("#tablewrapper>tr>td:nth-child(9)>input");
+            let p9 = document.querySelectorAll("#tablewrapper>tr>td:nth-child(10)>input");
+            let p10 = document.querySelectorAll("#tablewrapper>tr>td:nth-child(11)>input");
+            var period1 = <?php echo json_encode($period1); ?>;
+            var period2 = <?php echo json_encode($period2); ?>;
+            var period3 = <?php echo json_encode($period3); ?>;
+            var period4 = <?php echo json_encode($period4); ?>;
+            var period5 = <?php echo json_encode($period5); ?>;
+            var period6 = <?php echo json_encode($period6); ?>;
+            var period7 = <?php echo json_encode($period7); ?>;
+            var period8 = <?php echo json_encode($period8); ?>;
+            var period9 = <?php echo json_encode($period9); ?>;
+            var period10 = <?php echo json_encode($period10); ?>;            
+            for(i=0; i < nttable; i++){
+                p1[i].value = period1[i];
+                p2[i].value = period2[i];
+                p3[i].value = period3[i];
+                p4[i].value = period4[i];
+                p5[i].value = period5[i];
+                p6[i].value = period6[i];
+                p7[i].value = period7[i];
+                p8[i].value = period8[i];
+                p9[i].value = period9[i];
+                p10[i].value = period10[i];
+            }   
+        }
+
+        function ccode(){
+            let nccode = <?php echo $res_ccode->num_rows; ?>;
+            let ccodev = document.querySelectorAll("#courses>.coursecontent>div:nth-child(1)>input");
+            let ctitle = document.querySelectorAll("#courses>.coursecontent>div:nth-child(2)>textarea");
+            let cunits = document.querySelectorAll("#courses>.coursecontent>div:nth-child(3)>input");
+            var course_code = <?php echo json_encode($course_code); ?>;
+            var course_title = <?php echo json_encode($course_title); ?>;
+            var units = <?php echo json_encode($units); ?>;
+            for(i=0; i < nccode; i++){
+                ccodev[i].value = course_code[i];
+                ctitle[i].innerText = course_title[i];
+                cunits[i].value = units[i];
+            }
+            
+        }
+    </script>
     <script src="../assets/js/cpe.js"></script>
 </body>
 </html>
@@ -377,28 +489,19 @@
                     $(".remove").show();
                 </script>';
     }
-
-    // -------------------------------------- Courses Section Starts Here --------------------------------------
-    $course_code = array();
-    $course_title = array();
-    $units = array();
-    $ccode = 'SELECT * FROM cpe_courses';
-    $res_ccode = $conn->query($ccode);
-    if($res_ccode->num_rows > 0){
-        $i = 0;
-        while($ccoderow = $res_ccode->fetch_assoc()){
-            $course_code[$i] = $ccoderow['course_code'];
-            $course_title[$i] = $ccoderow['course_title'];
-            $units[$i] = $ccoderow['units'];
-            $i++;
-        }
-    }
-    for($i=0; $i < $res_ccode->num_rows; $i++){
-        echo $course_code[$i];
-        // $code = "#courses>.coursecontent>div:nth-child(".($i+1).")>input";
+    if($aready == "announce"){
         echo    '<script>
-                    code = document.querySelectorAll("#courses>.coursecontent>div:nth-child(1)>input");
-                    code[0].value = "$course_code[2]";
-                </script>';
-    }  
+                     announce();
+                 </script>';
+    }
+    if($tready == "ttable"){
+        echo    '<script>
+                     ttable();
+                 </script>';
+    }
+    if($ready == "ccode"){
+        echo    '<script>
+                     ccode();
+                 </script>';
+    }
 ?>
