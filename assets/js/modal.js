@@ -5,7 +5,7 @@ function teejay(){
     for(i = 0; i < tsub.length; i++){
         table2[i] = tsub[i].innerText;
     }
-
+    
     const numbers = [10, 10, 10, 10, 10, 10, 10, 10, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 10, 10, 10]
     todayz = date.getDay();
     hour = date.getHours();
