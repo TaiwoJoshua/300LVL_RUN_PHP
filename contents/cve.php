@@ -7,7 +7,7 @@
     $password = $_SESSION['password'];
     if(isset($matric) && $password !== ""){
         $ttime = strtotime($DateTime) - 1800;
-        $select = "SELECT * FROM cpe_admin_login_time WHERE matric='$matric'";
+        $select = "SELECT * FROM cve_admin_login_time WHERE matric='$matric'";
         $result = $conn->query($select);
         if($result->num_rows > 0){
             while($row = $result->fetch_assoc()){
@@ -30,7 +30,7 @@
         }
     }else if(isset($matric)){
         $ttime = strtotime($DateTime) - 86400;
-        $select = "SELECT * FROM cpe_login_time WHERE matric='$matric'";
+        $select = "SELECT * FROM cve_login_time WHERE matric='$matric'";
         $result = $conn->query($select);
         if($result->num_rows > 0){
             while($row = $result->fetch_assoc()){
@@ -54,7 +54,7 @@
     // -------------------------------------- Announcement Section Starts Here --------------------------------------
     $aready = "";
     $announce = array();
-    $announcement = 'SELECT * FROM cpe_announcement';
+    $announcement = 'SELECT * FROM cve_announcement';
     $res_announcement = $conn->query($announcement);
     if($res_announcement->num_rows > 0){
         $i = 0;
@@ -68,7 +68,7 @@
     // -------------------------------------- Time-Table Section Starts Here -----------------------------------
     $tready = "";
     $period1 = array(); $period2 = array(); $period3 = array(); $period4 = array(); $period5 = array(); $period6 = array(); $period7 = array(); $period8 = array(); $period9 = array(); $period10 = array();
-    $ttable = 'SELECT * FROM cpe_timetable';
+    $ttable = 'SELECT * FROM cve_timetable';
     $res_ttable = $conn->query($ttable);
     if($res_ttable->num_rows > 0){
         $i = 0;
@@ -91,7 +91,7 @@
     // -------------------------------------- Courses Section Starts Here --------------------------------------
     $ready = "";
     $course_code = array(); $course_title = array(); $units = array();
-    $ccode = 'SELECT * FROM cpe_courses';
+    $ccode = 'SELECT * FROM cve_courses';
     $res_ccode = $conn->query($ccode);
     if($res_ccode->num_rows > 0){
         $i = 0;
@@ -116,17 +116,17 @@
     <title>ENGINEERING 300LVL R.U.N</title>
     <style>
         .view{
-            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../assets/img/umberto-jXd2FSvcRr8-unsplash.jpg);
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../assets/img/mufid-majnun-h1kOzS2sGAk-unsplash.jpg);
         }
     </style>
 </head>
 <body>
-<form action="../assets/php/cpe_update.php" method="POST">
+<form action="../assets/php/cve_update.php" method="POST">
     <div class="pagewrapper animate__animated animate__slower" id="pagewrapper">
         <div class="view" id="view">
             <!-- -------------------------------------- Navbar Section Starts Here -------------------------------------- -->
             <div id="navbar">
-                <h1>RUN 300LVL COMPUTER ENGINEERING</h1>
+                <h1>RUN 300LVL CIVIL ENGINEERING</h1>
             </div>
             <!-- -------------------------------------- Navbar Section Ends Here -------------------------------------- -->
             
@@ -231,7 +231,7 @@
         <!-- -------------------------------------- Announcement Section Starts Here -------------------------------------- -->
         <div class="announcement hidden animate__animated animate__slower" id="announcement">
             <h2>Announcement</h2>
-            <div> 
+            <div>
 
             </div>
             <input type="number" name="n_announce" id="n_announce" style="display: none;">

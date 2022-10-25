@@ -36,9 +36,11 @@ body::-webkit-scrollbar-thumb{
 h1, h2, h3, h4{
     text-align: center;
 }
+form{
+    width: 100%;
+}
 .pagewrapper{
     width: 100%;
-    max-width: 100vw;
     height: auto;
     box-sizing: border-box;
     padding-bottom: 15px;
@@ -54,7 +56,6 @@ h1, h2, h3, h4{
     min-height: 620px;
     max-height: 650px;
     box-sizing: border-box;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../img/umberto-jXd2FSvcRr8-unsplash.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -343,9 +344,9 @@ table, th, td {
     box-sizing: border-box;
     margin: auto 10px;
 }
-.portal>button>a{
-    text-decoration: none;
-    color: black;
+.portal>button:hover{
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.1);
 }
 .background{
     background-color: rgb(191, 191, 191);
@@ -387,6 +388,9 @@ input[type="text"]{
     grid-template-columns: repeat(11, 100px);
     padding: 15px;
     grid-gap: 1.5em;
+}
+.animate__animated:not(#pagewrapper){
+    visibility: hidden;
 }
 
 /* ------------------------------ Media Query -------------------------------- */

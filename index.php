@@ -12,7 +12,6 @@
         $DateTime = date('Y-m-d H:i:s');
         if(isset($_POST['password']) && $_POST['password'] !== ""){
             $password = $_POST['password'];
-
             $select = "SELECT * FROM admins WHERE matric='$matric'";
             $result = $conn->query($select);
 
@@ -22,31 +21,53 @@
                     $hpassword = $_SESSION['password']=$row['password'];
                 }
                 if(password_verify($password, $hpassword)){
-                    $atselect = "SELECT * FROM admin_login_time WHERE matric='$matric'";
-                    $atresult = $conn->query($atselect);
-                    if($atresult->num_rows > 0){
-                        $atupdate = "UPDATE admin_login_time SET time='$DateTime' WHERE matric='$matric'";
-                        $atupdateresult = $conn->query($atupdate);
-                        if(stripos($matric, 'CPE') !== false){
+                    if(stripos($matric, 'CPE') !== false){
+                        $atselect = "SELECT * FROM cpe_admin_login_time WHERE matric='$matric'";
+                        $atresult = $conn->query($atselect);
+                        if($atresult->num_rows > 0){
+                            $atupdate = "UPDATE cpe_admin_login_time SET time='$DateTime' WHERE matric='$matric'";
+                            $atupdateresult = $conn->query($atupdate);
                             header('location: ./contents/cpe.php');
-                        }else if(stripos($matric, 'CVE') !== false){
+                        }else{
+                            $adminlogin = "INSERT INTO cpe_admin_login_time VALUES(null, '$matric', '$DateTime')";
+                            $result = $conn->query($adminlogin);
+                            header('location: ./contents/cpe.php');
+                        }
+                    }else if(stripos($matric, 'CVE') !== false){
+                        $atselect = "SELECT * FROM cve_admin_login_time WHERE matric='$matric'";
+                        $atresult = $conn->query($atselect);
+                        if($atresult->num_rows > 0){
+                            $atupdate = "UPDATE cve_admin_login_time SET time='$DateTime' WHERE matric='$matric'";
+                            $atupdateresult = $conn->query($atupdate);
                             header('location: ./contents/cve.php');
-                        }else if(stripos($matric, 'MEE') !== false){
-                            header('location: ./contents/mee.php');
-                        }else if(stripos($matric, 'EEE') !== false){
+                        }else{
+                            $adminlogin = "INSERT INTO cve_admin_login_time VALUES(null, '$matric', '$DateTime')";
+                            $result = $conn->query($adminlogin);
+                            header('location: ./contents/cve.php');
+                        }
+                    }else if(stripos($matric, 'EEE') !== false){
+                        $atselect = "SELECT * FROM eee_admin_login_time WHERE matric='$matric'";
+                        $atresult = $conn->query($atselect);
+                        if($atresult->num_rows > 0){
+                            $atupdate = "UPDATE eee_admin_login_time SET time='$DateTime' WHERE matric='$matric'";
+                            $atupdateresult = $conn->query($atupdate);
+                            header('location: ./contents/eee.php');
+                        }else{
+                            $adminlogin = "INSERT INTO eee_admin_login_time VALUES(null, '$matric', '$DateTime')";
+                            $result = $conn->query($adminlogin);
                             header('location: ./contents/eee.php');
                         }
-                    }else{
-                        $adminlogin = "INSERT INTO admin_login_time VALUES(null, '$matric', '$DateTime')";
-                        $result = $conn->query($adminlogin);
-                        if(stripos($matric, 'CPE') !== false){
-                            header('location: ./contents/cpe.php');
-                        }else if(stripos($matric, 'CVE') !== false){
-                            header('location: ./contents/cve.php');
-                        }else if(stripos($matric, 'MEE') !== false){
+                    }else if(stripos($matric, 'MEE') !== false){
+                        $atselect = "SELECT * FROM mee_admin_login_time WHERE matric='$matric'";
+                        $atresult = $conn->query($atselect);
+                        if($atresult->num_rows > 0){
+                            $atupdate = "UPDATE mee_admin_login_time SET time='$DateTime' WHERE matric='$matric'";
+                            $atupdateresult = $conn->query($atupdate);
                             header('location: ./contents/mee.php');
-                        }else if(stripos($matric, 'EEE') !== false){
-                            header('location: ./contents/eee.php');
+                        }else{
+                            $adminlogin = "INSERT INTO mee_admin_login_time VALUES(null, '$matric', '$DateTime')";
+                            $result = $conn->query($adminlogin);
+                            header('location: ./contents/mee.php');
                         }
                     }
                 }else{
@@ -58,31 +79,53 @@
             }
             
         }else{
-            $stselect = "SELECT * FROM login_time WHERE matric='$matric'";
-            $stresult = $conn->query($stselect);
-            if($stresult->num_rows > 0){
-                $stupdate = "UPDATE login_time SET time='$DateTime' WHERE matric='$matric'";
-                $stupdateresult = $conn->query($stupdate);
-                if(stripos($matric, 'CPE') !== false){
+            if(stripos($matric, 'CPE') !== false){
+                $stselect = "SELECT * FROM cpe_login_time WHERE matric='$matric'";
+                $stresult = $conn->query($stselect);
+                if($stresult->num_rows > 0){
+                    $stupdate = "UPDATE cpe_login_time SET time='$DateTime' WHERE matric='$matric'";
+                    $stupdateresult = $conn->query($stupdate);
                     header('location: ./contents/cpe.php');
-                }else if(stripos($matric, 'CVE') !== false){
+                }else{
+                    $login = "INSERT INTO cpe_login_time VALUES(null, '$matric', '$DateTime')";
+                    $result = $conn->query($login);
+                    header('location: ./contents/cpe.php');
+                }
+            }else if(stripos($matric, 'CVE') !== false){
+                $stselect = "SELECT * FROM cve_login_time WHERE matric='$matric'";
+                $stresult = $conn->query($stselect);
+                if($stresult->num_rows > 0){
+                    $stupdate = "UPDATE cve_login_time SET time='$DateTime' WHERE matric='$matric'";
+                    $stupdateresult = $conn->query($stupdate);
                     header('location: ./contents/cve.php');
-                }else if(stripos($matric, 'MEE') !== false){
-                    header('location: ./contents/mee.php');
-                }else if(stripos($matric, 'EEE') !== false){
+                }else{
+                    $login = "INSERT INTO cve_login_time VALUES(null, '$matric', '$DateTime')";
+                    $result = $conn->query($login);
+                    header('location: ./contents/cve.php');
+                }
+            }else if(stripos($matric, 'EEE') !== false){
+                $stselect = "SELECT * FROM eee_login_time WHERE matric='$matric'";
+                $stresult = $conn->query($stselect);
+                if($stresult->num_rows > 0){
+                    $stupdate = "UPDATE eee_login_time SET time='$DateTime' WHERE matric='$matric'";
+                    $stupdateresult = $conn->query($stupdate);
+                    header('location: ./contents/eee.php');
+                }else{
+                    $login = "INSERT INTO eee_login_time VALUES(null, '$matric', '$DateTime')";
+                    $result = $conn->query($login);
                     header('location: ./contents/eee.php');
                 }
-            }else{
-                $login = "INSERT INTO login_time VALUES(null, '$matric', '$DateTime')";
-                $result = $conn->query($login);
-                if(stripos($matric, 'CPE') !== false){
-                    header('location: ./contents/cpe.php');
-                }else if(stripos($matric, 'CVE') !== false){
-                    header('location: ./contents/cve.php');
-                }else if(stripos($matric, 'MEE') !== false){
+            }else if(stripos($matric, 'MEE') !== false){
+                $stselect = "SELECT * FROM mee_login_time WHERE matric='$matric'";
+                $stresult = $conn->query($stselect);
+                if($stresult->num_rows > 0){
+                    $stupdate = "UPDATE mee_login_time SET time='$DateTime' WHERE matric='$matric'";
+                    $stupdateresult = $conn->query($stupdate);
                     header('location: ./contents/mee.php');
-                }else if(stripos($matric, 'EEE') !== false){
-                    header('location: ./contents/eee.php');
+                }else{
+                    $login = "INSERT INTO mee_login_time VALUES(null, '$matric', '$DateTime')";
+                    $result = $conn->query($login);
+                    header('location: ./contents/mee.php');
                 }
             }
         }
@@ -95,7 +138,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./assets/img/redeemer's icon.jfif">
-    <link rel="stylesheet" href="./assets/css/welcome.css">
+    <link rel="stylesheet" href="./assets/css/index.css">
     <title>ENGINEERING 300LVL R.U.N</title>
 </head>
 <body>

@@ -5,9 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../assets/img/redeemer's icon.jfif">
-    <link rel="stylesheet" href="../assets/css/cpe.css">
+    <link rel="stylesheet" href="../assets/css/modal.css">
     <link rel="stylesheet" href="../assets/css/animate.min.css">
     <title>ENGINEERING 300LVL R.U.N</title>
+    <style>
+        .view{
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../assets/img/umberto-jXd2FSvcRr8-unsplash.jpg);
+        }
+    </style>
 </head>
 <body>
     <div class="pagewrapper animate__animated animate__slower" id="pagewrapper">
@@ -296,14 +301,15 @@
             </div>
         </div>
         <div id="up">
-            <button class="download update">Update</button>
+            <input type="submit" value="Update All" formaction="../assets/php/cpe_update.php" name="update" class="download update">
+            <button class="download update" type="submit">Update</button>
         </div>
         <!-- -------------------------------------- Courses Section Ends Here -------------------------------------- -->
         
         <!-- -------------------------------------- Portal Section Starts Here -------------------------------------- -->
         <div class="portal">
-            <button>
-                <a href="https://reg.run.edu.ng/stud_main.php" target="blank">Go to Student Portal</a>
+            <button onclick="return false;">
+                 Go to Student Portal
             </button>
         </div>
         <!-- -------------------------------------- Portal Section Ends Here -------------------------------------- -->
@@ -312,6 +318,7 @@
     <script src="../assets/js/jquery.js"></script>
     <script src="../assets/js/autosize.min.js"></script>
     <script src="../assets/js/sweetalert.min.js"></script>
-    <script src="../assets/js/cpe.js"></script>
+    <script src="../assets/js/modal.js"></script>
+    <script src="../assets/js/animation.js"></script>
 </body>
 </html>

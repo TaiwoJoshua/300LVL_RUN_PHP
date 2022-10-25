@@ -11,7 +11,7 @@ $(window).scroll(function(){
     entries.forEach(entry => {
         if (entry.intersectionRatio > options.threshold) {
             pclass.classList.add('animate__flipInX');
-            pclass.classList.add('visible');
+            pclass.style.visibility = "visible";
         }
     });
     }, options);
@@ -26,12 +26,27 @@ $(window).scroll(function(){
     entries.forEach(entry => {
         if (entry.intersectionRatio > options.threshold) {
             tclass.classList.add('animate__flipInY');
-            tclass.classList.add('visible');
+            tclass.style.visibility = "visible";
         }
     });
     }, options);
     
     tobserver.observe(tclass);
+});
+ 
+// ----------------- Announcement Section ----------------------
+$(window).scroll(function(){
+	const aclass = document.querySelector('#announcement');
+    const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.intersectionRatio > options.threshold) {
+            aclass.classList.add('animate__fadeIn');
+            aclass.style.visibility = "visible";
+        }
+    });
+    }, options);
+
+    observer.observe(aclass);
 });
 
 // --------------------- Time-Table Section ----------------------
@@ -41,7 +56,7 @@ $(window).scroll(function(){
     entries.forEach(entry => {
         if (entry.intersectionRatio > options.threshold) {
             classt.classList.add('animate__fadeInUp');
-            classt.classList.add('visible');
+            classt.style.visibility = "visible";
         }
     });
     }, options);
@@ -58,8 +73,8 @@ $(window).scroll(function(){
         if (entry.intersectionRatio > options.threshold) {
             cclass.classList.add("animate__backInUp");
             classc.classList.add("animate__backInUp");
-            cclass.classList.add('visible');
-            classc.classList.add('visible');
+            cclass.style.visibility = "visible";
+            classc.style.visibility = "visible";
         }
     });
     }, options);
