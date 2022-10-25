@@ -236,6 +236,7 @@
             </div>
             <input type="number" name="n_announce" id="n_announce" style="display: none;">
             <div id="add1">
+                <button id="edit" class="download update">Edit</button>
                 <button id="add" class="download update">Add</button>        
             </div><br>
         </div>
@@ -420,10 +421,11 @@
             let nannounce = <?php echo $res_announcement->num_rows; ?>;
             var announce = <?php echo json_encode($announce); ?>;
             for(i=0; i < nannounce; i++){
-                $("#announcement>div:nth-child(2)").append('<div><textarea class="announce" name = "announce[]"></textarea></div>');
+                $("#announcement>div:nth-child(2)").append('<div><textarea readonly class="announce" name = "announce[]"></textarea></div>');
                 let announcediv = document.querySelectorAll("#announcement>div:nth-child(2)>div>textarea");
                 announcediv[i].innerText = announce[i];
             }
+            autosize(document.querySelectorAll("textarea"));
         }
 
         function ttable(){
@@ -489,7 +491,103 @@
             for(n = 0; n < tclass.length; n++){
                 tperiod[n].innerText = tclass[n];
             }   
-            teejay();
+            
+            // -------------------------------------- Prev, Now and Next --------------------------------------
+            table2 = [];
+            for(i = 0; i < tclass.length; i++){
+                table2[i] = tclass[i];
+            }
+            
+            const numbers = [10, 10, 10, 10, 10, 10, 10, 10, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 10, 10, 10]
+            todayz = date.getDay();
+            hour = date.getHours();
+            prevHour = hour - 1;                 // To get Previous Hour
+            currentHour = hour;                  // To get Current Hour
+            nextHour = hour + 1;                 // To get Next Hour
+            iprev = numbers[prevHour];           // Changes the value of hour to new index value from numbers
+            inow = numbers[currentHour];         // Changes the value of hour to new index value from numbers
+            inext = numbers[nextHour];           // Changes the value of hour to new index value from numbers
+            prev = table2[iprev];                // Picks string from table2 based on the index value      
+            now = table2[inow];                  // Picks string from table2 based on the index value
+            next = table2[inext];                // Picks string from table2 based on the index value
+            document.getElementById('prev').innerHTML = prev;
+            document.getElementById('now').innerHTML = now;
+            document.getElementById('next').innerHTML = next;
+            if(iprev == 10 || today == "Saturday" || today == "Sunday"){
+                document.getElementById('prev').innerHTML = "None";
+            };
+            if(inext == 10 || today == "Saturday" || today == "Sunday"){
+                document.getElementById('next').innerHTML = "None";
+            };
+            if(inow == 10 || today == "Saturday" || today == "Sunday"){
+                document.getElementById('now').innerHTML = "None";
+            };
+            if(prevHour == -1){
+                document.getElementById('prev').innerHTML = "None";
+            };
+
+            // -------------------------------------- Alert Present Class --------------------------------------
+            present = document.getElementById('now').innerHTML;
+            if(todayz >= 1 && todayz < 6 && hour >= 8 && hour < 18){
+                if(present != "None"){
+                    swal({
+                        title: 'Ongoing Class!',
+                        text: present,
+                        showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        }
+                    })
+                }
+            };
+                
+            // ---------------------------------------- Countdown Timer ----------------------------------------
+            nextz = document.getElementById('next').innerHTML;
+            if(todayz >= 1 && todayz < 6 && hour >= 7 && hour < 17 && nextz != "None"){
+                const countToDate = new Date("Jan 5, 9999 15:00:00").getTime();
+                let previousTimeBetweenDates
+                setInterval(() => {
+                const currentDate = new Date()
+                const timeBetweenDates = Math.ceil((countToDate - currentDate) / 1000)
+                flipAllCards(timeBetweenDates)
+                previousTimeBetweenDates = timeBetweenDates
+                }, 250)
+                function flipAllCards(time) {
+                    const seconds = time % 60
+                    const minutes = Math.floor(time / 60) % 60
+                    flip(document.querySelector("[data-minutes-tens]"), Math.floor(minutes / 10))
+                    flip(document.querySelector("[data-minutes-ones]"), minutes % 10)
+                    flip(document.querySelector("[data-seconds-tens]"), Math.floor(seconds / 10))
+                    flip(document.querySelector("[data-seconds-ones]"), seconds % 10)
+                }
+                function flip(flipCard, newNumber) {
+                    const topHalf = flipCard.querySelector(".top")
+                    const startNumber = parseInt(topHalf.textContent)
+                    if (newNumber === startNumber) return
+                    const bottomHalf = flipCard.querySelector(".bottom")
+                    const topFlip = document.createElement("div")
+                    topFlip.classList.add("top-flip")
+                    const bottomFlip = document.createElement("div")
+                    bottomFlip.classList.add("bottom-flip")
+                    top.textContent = startNumber
+                    bottomHalf.textContent = startNumber
+                    topFlip.textContent = startNumber
+                    bottomFlip.textContent = newNumber
+                    topFlip.addEventListener("animationstart", e => {
+                        topHalf.textContent = newNumber
+                    })
+                    topFlip.addEventListener("animationend", e => {
+                        topFlip.remove()
+                    })
+                    bottomFlip.addEventListener("animationend", e => {
+                        bottomHalf.textContent = newNumber
+                        bottomFlip.remove()
+                    })
+                    flipCard.append(topFlip, bottomFlip)
+                }
+            }
         }   
 
         function ccode(){

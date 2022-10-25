@@ -304,6 +304,9 @@ table, th, td {
 }
 .coursecontent>div{
     padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .coursecontent>div:nth-child(2)>input{
     text-align: left;
@@ -400,5 +403,11 @@ input[type="text"]{
     }
     .class>div>h2, .today>h2, .timetable>h2, .course>h2{
         font-size: 20px;
+    }
+    .coursecontent>div>textarea, .coursecontent>div>input, .coursecontent>div{
+        font-size: 0.8rem;
+    }
+    .coursecontent>div{
+        padding: 10px 5px;
     }
 }

@@ -7,23 +7,39 @@
     <link rel="icon" href="./img/redeemer's icon.jfif">
     <title>Updating</title>
     <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
         body{ background-color: white;
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .loader_wrapper{
-            width: 40%;
+            width: 100%;
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             margin: 20% auto;
             display: none;
         }
         .progressbar-wrapper{
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             margin: 20px 10px;
         }
         progress{
             background-color: #f3f3f3;
             border: none;
-            width: 80%;
+            min-width: 80%;
             height: 18px;
             margin-right: 10px;
             border-radius: 9px;
@@ -51,23 +67,24 @@
         .none{
             display: none;
         }
+        #complete{
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <div class="loader_wrapper" id="loader_wrapper">
-        <center><div class="progressbar-wrapper" id="progressbar-wrapper">
+        <div class="progressbar-wrapper" id="progressbar-wrapper">
             <progress class="progressbar" max="100"></progress><br>
             <span>
                 <span>Updating</span>
                 <span class="progress-value">0%</span>
                 <span class="none">100</span>
             </span>
-        </div></center>
-        <center>
-            <h2 class="none" id="complete">
+        </div>
+        <h2 class="none" id="complete">
                 Update Completed Succesfully!!! <br> Thank You
-            </h2>
-        </center>
+        </h2>
     </div>
     <script>
             var progressbar = document.getElementsByClassName("progressbar");
