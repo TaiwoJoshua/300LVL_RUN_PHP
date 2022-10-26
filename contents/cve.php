@@ -395,6 +395,11 @@
                 <div><textarea rows="1" name="courseTitle[]"></textarea></div>
                 <div><input type="text" name="units[]"></div>
             </div>
+            <div class="coursecontent">
+                <div><input type="text" name="courseCode[]"></div>
+                <div><textarea rows="1" name="courseTitle[]"></textarea></div>
+                <div><input type="text" name="units[]"></div>
+            </div>
         </div>
         <div id="up">
             <input type="number" name="ncourse" id="ncourse" style="display: none;">

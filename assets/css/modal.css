@@ -405,7 +405,7 @@ input[type="text"]{
         font-size: 20px;
     }
     .coursecontent>div>textarea, .coursecontent>div>input, .coursecontent>div{
-        font-size: 0.8rem;
+        font-size: 13px;
     }
     .coursecontent>div{
         padding: 10px 5px;
