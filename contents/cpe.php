@@ -236,7 +236,7 @@
             </div>
             <input type="number" name="n_announce" id="n_announce" style="display: none;">
             <div id="add1">
-                <button id="edit" class="download update">Edit</button>
+                <button id="edit" class="download update" onclick="return false;">Edit</button>
                 <button id="add" class="download update">Add</button>        
             </div>
         </div>
