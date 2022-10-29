@@ -36,10 +36,13 @@
             justify-content: center;
             margin: 20px 10px;
         }
+        center{
+            min-width: 80%;
+        }
         progress{
             background-color: #f3f3f3;
             border: none;
-            min-width: 80%;
+            width: 100%;
             height: 18px;
             margin-right: 10px;
             border-radius: 9px;
@@ -75,7 +78,7 @@
 <body>
     <div class="loader_wrapper" id="loader_wrapper">
         <div class="progressbar-wrapper" id="progressbar-wrapper">
-            <progress class="progressbar" max="100"></progress><br>
+            <center><progress class="progressbar" max="100"></progress></center><br>
             <span>
                 <span>Updating</span>
                 <span class="progress-value">0%</span>
@@ -105,10 +108,10 @@
 </body>
 </html>
 
-
 <?php
     include './db_connect.php';
-    if(isset($_POST['update'])){
+    // if(isset($_POST['update'])){
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
         $DateTime = date('Y-m-d H:i:s');
 
         // -------------------------------------- Announcement Section Starts Here -------------------------------------- 
@@ -123,11 +126,11 @@
                 $aupdate = "INSERT INTO eee_announcement VALUES(null,'$aannounced', '$DateTime')";
                 $res_aupdate = $conn->query($aupdate);
             }
-            
         }
 
         // -------------------------------------- Time-Table Section Starts Here --------------------------------------
-        for($i=0; $i < 5; $i++){
+        $nrow = $_POST['nrow'];
+        for($i=0; $i < $nrow; $i++){
             $period1 = $_POST['period1'][$i];
             $period2 = $_POST['period2'][$i];
             $period3 = $_POST['period3'][$i];
@@ -140,11 +143,11 @@
             $period10 = $_POST['period10'][$i];
             $tupdate = "UPDATE eee_timetable SET `Period 1`='$period1',`Period 2`='$period2',`Period 3`='$period3',`Period 4`='$period4',`Period 5`='$period5',`Period 6`='$period6',`Period 7`='$period7',`Period 8`='$period8',`Period 9`='$period9',`Period 10`='$period10' WHERE id=($i+1)";
             $res_tupdate = $conn->query($tupdate);
-            
         }
 
         // -------------------------------------- Courses Section Starts Here --------------------------------------
-        for($i=0; $i < 10; $i++){
+        $ncourse = $_POST['ncourse'];
+        for($i=0; $i < $ncourse; $i++){
             $courseCode = $_POST['courseCode'][$i];
             $courseTitle = $_POST['courseTitle'][$i];
             $units = $_POST['units'][$i];

@@ -35,6 +35,7 @@ $("#edit").click(function(e){
 $("input").prop("readonly", true);
 $("textarea").prop("readonly", true);
 $(".update").hide();
+$("#upass").prop("readonly", false);
 
 $("#logout").click(function(){
     window.open("../assets/php/logout.php", '_self');
@@ -42,3 +43,28 @@ $("#logout").click(function(){
 $(".portal>button").click(function(){
     window.open("https://reg.run.edu.ng/stud_main.php", '_blank');
 });
+
+function myFunction(){
+    let x = document.getElementById("upass");
+    let y = document.querySelector("input[type='checkbox']");
+    if(y.checked === true) {
+        x.type = "text";
+    }else{
+        x.type = "password";
+    }
+}
+
+$("#update").click(function(){
+    $("#cupdate").css('display', 'flex');
+});
+$("#close").click(function(){
+    $("#cupdate").hide();
+});
+const cupdate = document.getElementById("cupdate");
+const pagew = document.getElementById("pagewrapper");
+const form = document.querySelector("cupdate>form");
+window.onclick = function(event) {
+    if (event.target == cupdate || event.target == pagew){
+        cupdate.style.display = "none";
+    }
+}

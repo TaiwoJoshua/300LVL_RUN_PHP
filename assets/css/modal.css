@@ -36,9 +36,6 @@ body::-webkit-scrollbar-thumb{
 h1, h2, h3, h4{
     text-align: center;
 }
-form{
-    width: 100%;
-}
 .pagewrapper{
     width: 100%;
     height: auto;
@@ -373,7 +370,7 @@ table, th, td {
     border: 3px solid gold;
 }
 
-input[type="text"]{
+input[type="text"]:not(#upass){
     width: 100%;
     background-color: transparent;
     text-align: center;
@@ -394,6 +391,85 @@ input[type="text"]{
 }
 .animate__animated:not(#pagewrapper){
     visibility: hidden;
+}
+#cupdate{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: none;
+}
+#cupdate>form{
+    margin: 0;
+    box-sizing: border-box;
+    max-width: 450px;
+    border: 2px solid white;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 1px 1px 20px rgb(255 255 255);
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+}
+#upass{
+    box-sizing: border-box;
+    outline: none;
+    margin-top: 10px;
+    color: white;
+    padding: 5px;
+    background-color: transparent;
+    border-radius: 10px;
+}
+#usubmit{
+    box-sizing: border-box;
+    margin: 10px auto;
+    font-size: 15px;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+}
+#usubmit:hover{
+    cursor: pointer;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+}
+::placeholder{
+    color: white;
+}
+#pincorrect{
+    color: red;
+    font-size: 12px;
+    display: none;
+}
+#cupdate>form>div:nth-child(4){
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+#close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: none;
+    background-color: red;
+    color: white;
+    padding: 5px;
+    border: none;
+}
+#close:hover{
+    cursor: pointer;
 }
 
 /* ------------------------------ Media Query -------------------------------- */

@@ -1,6 +1,7 @@
 function myFunction(){
     let x = document.getElementById("password");
-    if(x.type === "password") {
+    let y = document.querySelector("input[type='checkbox']");
+    if(y.checked === true) {
         x.type = "text";
     }else{
         x.type = "password";

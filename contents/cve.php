@@ -121,7 +121,7 @@
     </style>
 </head>
 <body>
-<form action="../assets/php/cve_update.php" method="POST">
+<form action="../assets/php/cve_update.php" method="POST" id="form">
     <div class="pagewrapper animate__animated animate__slower" id="pagewrapper">
         <div class="view" id="view">
             <!-- -------------------------------------- Navbar Section Starts Here -------------------------------------- -->
@@ -334,7 +334,7 @@
                 </div>
                 <div id="downloadwrapper">
                     <input type="number" name="nrow" id="nrow" style="display: none;">
-                    <button class="download"><a href="../assets/files/Time-Table for the Semester.pdf" download="Time-Table for the Semester">Download PDF</a></button>
+                    <button class="download"><a href="../assets/files/CVE Time-Table for the Semester.docx" download="Time-Table for the Semester">Download Word</a></button>
                 </div>
             </div>
         </div><br>
@@ -403,7 +403,7 @@
         </div>
         <div id="up">
             <input type="number" name="ncourse" id="ncourse" style="display: none;">
-            <input type="submit" value="Update All" name="update" class="download update">
+            <a href="#cupdate" id="update"><input type="button" name="update" value="Update All" class="download update"></a>
             <button class="download update" onclick="return false;" id="logout">Log Out</button>
         </div>
         <!-- -------------------------------------- Courses Section Ends Here -------------------------------------- -->
@@ -418,6 +418,21 @@
         <p id="maintain">This project was built and is being maintained by <a href="https://taiwojoshua.netlify.app/" target="_blank">Taiwo Joshua</a></p>
     </div>
 </form>
+<div id="cupdate">
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
+        <div>Please, input your password below to proceed</div>
+        <input type="password" name="upass" required id="upass" placeholder="Your Password Here...">
+        <div>
+            <i id="pincorrect">Incorrect Password</i>
+        </div>
+        <div>
+            <input type="checkbox" onclick="myFunction()">
+            <label>Show Password</label>
+        </div>
+        <input type="submit" value="update" id="usubmit" name="usubmit">
+        <div id="close">X</div>
+    </form>
+</div>
     <script src="../assets/js/jquery.js"></script>
     <script src="../assets/js/autosize.min.js"></script>
     <script src="../assets/js/sweetalert.min.js"></script>
@@ -636,5 +651,18 @@
         echo    '<script>
                     ccode();
                  </script>';
+    }
+    if(isset($_POST['usubmit'])){
+        $upass = $_POST['upass'];
+        if(password_verify($upass, $password)){
+            echo    '<script>
+                        document.getElementById("form").submit();
+                    </script>';
+        }else{
+            echo    '<script>
+                        document.getElementById("cupdate").style.display = "flex";
+                        document.getElementById("pincorrect").style.display = "block";
+                    </script>';
+        }
     }
 ?>

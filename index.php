@@ -3,6 +3,7 @@
 
     $loginmsg = "";
     $check = "";
+    $matric = "";
 
     // echo password_hash('Hello', PASSWORD_DEFAULT, ['cost' => 12]);
     if(isset($_POST['submit'])){
@@ -159,7 +160,7 @@
                     <div>
                         Input your matric number to proceed
                     </div><br>
-                    <input type="text" id="matric" required name="matric" placeholder="Your Matric No. here...">
+                    <input type="text" id="matric" required name="matric" value="<?php echo $matric ?>" placeholder="Your Matric No. here...">
                     <i id="empty">Please input your matric number</i>
                     <i id="incorrect">Invalid Matric No. Try again</i>
                     <input type="password" name="password" id="password" placeholder="Your Password here...">
