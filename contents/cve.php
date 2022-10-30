@@ -434,7 +434,6 @@
     </form>
 </div>
     <script src="../assets/js/jquery.js"></script>
-    <script src="../assets/js/autosize.min.js"></script>
     <script src="../assets/js/sweetalert.min.js"></script>
     <script>
         function announce(){
@@ -445,7 +444,6 @@
                 let announcediv = document.querySelectorAll("#announcement>div:nth-child(2)>div>textarea");
                 announcediv[i].innerText = announce[i];
             }
-            autosize(document.querySelectorAll("textarea"));
         }
 
         function ttable(){

@@ -33,7 +33,7 @@ $("#edit").click(function(e){
 })
 
 $("input").prop("readonly", true);
-$("textarea").prop("readonly", true);
+// $("textarea").prop("readonly", true);
 $(".update").hide();
 $("#upass").prop("readonly", false);
 
@@ -67,4 +67,16 @@ window.onclick = function(event) {
     if (event.target == cupdate || event.target == pagew){
         cupdate.style.display = "none";
     }
+}
+
+$('textarea').on('input', function () {
+    this.style.height = 'auto';
+      
+    this.style.height = 
+            (this.scrollHeight) + 'px';
+});
+
+let textarea = document.getElementsByTagName('textarea')
+for(i=0; i<textarea.length; i++){
+    textarea[i].style.height = textarea[i].scrollHeight + 'px';
 }
