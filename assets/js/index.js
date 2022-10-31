@@ -31,6 +31,7 @@ $("#slogin").click(function(){
 
 $("#submit").click(function(e){
     let matric = $("#matric").val();
+    let no = matric.slice(8, 10);
     var rx = /[a-z]/gi;
     var rxn = /[0-9]/gi;
     var m = matric.match(rx);
@@ -39,7 +40,7 @@ $("#submit").click(function(e){
         $("#empty").show();
         $("#incorrect").hide();
     }else{
-        if((matric.search(/CPE/i) > -1 || matric.search(/CVE/i) > -1 || matric.search(/EEE/i) > -1 || matric.search(/MEE/i) > -1)  && m.length > 5 && n.length > 5){
+        if((matric.search(/CPE/i) > -1 || matric.search(/CVE/i) > -1 || matric.search(/EEE/i) > -1 || matric.search(/MEE/i) > -1)  && m.length > 5 && n.length > 5  && (no == "21" || no == "20")){
             $("#incorrect").hide();
             $("#empty").hide();
         }else{

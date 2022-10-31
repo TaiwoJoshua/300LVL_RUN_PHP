@@ -5,7 +5,6 @@
     $check = "";
     $matric = "";
 
-    // echo password_hash('Hello', PASSWORD_DEFAULT, ['cost' => 12]);
     if(isset($_POST['submit'])){
         $matric = $_POST['matric']; 
         $_SESSION['matric'] = $_POST['matric'];

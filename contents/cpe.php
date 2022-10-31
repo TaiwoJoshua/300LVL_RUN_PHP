@@ -444,6 +444,11 @@
                 let announcediv = document.querySelectorAll("#announcement>div:nth-child(2)>div>textarea");
                 announcediv[i].innerText = announce[i];
             }
+
+            let textarea = document.getElementsByTagName('textarea')
+            for(i=0; i<textarea.length; i++){
+                textarea[i].style.height = textarea[i].scrollHeight + 'px';
+            }
         }
 
         function ttable(){
@@ -621,6 +626,11 @@
                 ctitle[i].innerText = course_title[i];
                 cunits[i].value = units[i];
             }  
+
+            let textarea = document.getElementsByTagName('textarea')
+            for(i=0; i<textarea.length; i++){
+                textarea[i].style.height = textarea[i].scrollHeight + 'px';
+            }
         }
     </script>
     <script src="../assets/js/modal.js"></script>

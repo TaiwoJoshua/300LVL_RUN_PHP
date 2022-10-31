@@ -33,7 +33,7 @@ $("#edit").click(function(e){
 })
 
 $("input").prop("readonly", true);
-// $("textarea").prop("readonly", true);
+$("textarea").prop("readonly", true);
 $(".update").hide();
 $("#upass").prop("readonly", false);
 
