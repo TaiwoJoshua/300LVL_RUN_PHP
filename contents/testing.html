@@ -124,7 +124,7 @@
         
         <!-- -------------------------------------- Announcement Section Starts Here -------------------------------------- -->
         <div class="announcement hidden animate__animated animate__slower" id="announcement">
-            <h2>Announcement</h2>
+            <h2>Announcements</h2>
             <div>
                 <div>
                     <textarea class="announce">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium nobis, voluptatum, a consectetur magni iste commodi dolore dolorem rem sint possimus dolor, doloribus eum aliquam quaerat id accusamus et minus.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium nobis, voluptatum, a consectetur magni iste commodi dolore dolorem rem sint possimus dolor, doloribus eum aliquam quaerat id accusamus et minus.</textarea>
@@ -240,7 +240,12 @@
                 <div id="downloadwrapper">
                     <button class="download update">Update</button>
                     <button class="download"><a href="../assets/files/Time-Table for the Semester.pdf" download="Time-Table for the Semester">Download PDF</a></button>
+                </div>
+                <div id="filewrapper" class="update">
                     <input type="file" name="timetable" id="time_table">
+                    <i class="ferror" id="large">File must be less than or equal to 1mb</i>
+                    <i class="ferror" id="format">Only .doc or .docx is allowed</i>
+                    <i class="ferror" id="name">Unacceptable File Name</i>
                 </div>
             </div>
         </div><br>
@@ -335,6 +340,38 @@
     </form>
 </div>
     <script src="../assets/js/jquery.js"></script>
+    <script>
+        $("#time_table").change(function(){
+            const fileSize = document.getElementById("time_table").files[0].size;
+            if(fileSize > 1024000){
+                $("#large").show();
+                $("#format").hide();
+                $("#name").hide();
+                $("#update").addClass('disable');
+            }else{
+                $("#large").hide();
+                var fname = document.getElementById("time_table").files[0].name;
+                var start = fname.length - 4;
+                var end = fname.length + 1;
+                var ext = fname.slice(start, end);
+                if(ext == "docx" || ext == ".doc"){
+                    if(fname == "CPE Time-Table for the Semester.docx" || fname == "CPE Time-Table for the Semester.doc"){
+                        $("#update").removeClass('disable');
+                        $("#format").hide();
+                        $("#name").hide();
+                    }else{
+                        $("#update").addClass('disable');
+                        $("#name").show();
+                        $("#format").hide();
+                    }
+                }else{
+                    $("#update").addClass('disable');
+                    $("#format").show();
+                    $("#name").hide();
+                }
+            };
+        })
+    </script>
     <script src="../assets/js/sweetalert.min.js"></script>
     <script src="../assets/js/modal.js"></script>
     <script src="../assets/js/animation.js"></script>

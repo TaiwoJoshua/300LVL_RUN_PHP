@@ -321,12 +321,17 @@ table, th, td {
     font-family: Arial, Helvetica, sans-serif;
     resize: none;
 }
-#up{
+#up, #fup{
     width: 100%;
     display: flex;
     justify-content: flex-end;
     margin: 5px auto;
     box-sizing: border-box;
+}
+#fup{
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: 10px;
 }
 
 /* -------------------------------------- Portal Section Starts Here -------------------------------------- */
@@ -404,7 +409,7 @@ input[type="text"]:not(#upass){
     background-color: rgba(0, 0, 0, 0.3);
     display: none;
 }
-#cupdate>form{
+#cupdate>div{
     margin: 0;
     box-sizing: border-box;
     max-width: 450px;
@@ -445,12 +450,12 @@ input[type="text"]:not(#upass){
 ::placeholder{
     color: white;
 }
-#pincorrect{
+#pincorrect, .ferror{
     color: red;
     font-size: 12px;
     display: none;
 }
-#cupdate>form>div:nth-child(4){
+#cupdate>div>div:nth-child(4){
     margin: 0;
     padding: 0;
     display: flex;
@@ -471,6 +476,17 @@ input[type="text"]:not(#upass){
 #close:hover{
     cursor: pointer;
 }
+#filewrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 5px;
+    box-sizing: border-box;
+}
+.disable{
+    pointer-events: none;
+}
 
 /* ------------------------------ Media Query -------------------------------- */
 @media screen and (max-width: 780px) and (min-width: 320px){
@@ -481,7 +497,7 @@ input[type="text"]:not(#upass){
         font-size: 20px;
     }
     .coursecontent>div>textarea, .coursecontent>div>input, .coursecontent>div{
-        font-size: 13px;
+        font-size: 13px !important;
     }
     .coursecontent>div{
         padding: 10px 5px;

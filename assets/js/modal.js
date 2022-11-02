@@ -80,3 +80,50 @@ let textarea = document.getElementsByTagName('textarea')
 for(i=0; i<textarea.length; i++){
     textarea[i].style.height = textarea[i].scrollHeight + 'px';
 }
+
+let matric = $("#matric").val();
+let fname = "";
+let fname2 = "";
+$("#time_table").change(function(){
+    const fileSize = document.getElementById("time_table").files[0].size;
+    if(fileSize > 102400){
+        $("#large").show();
+        $("#format").hide();
+        $("#name").hide();
+        $("#update").addClass('disable');
+    }else{
+        $("#large").hide();
+        const fnames = document.getElementById("time_table").files[0].name;
+        const start = fnames.length - 4;
+        const end = fnames.length + 1;
+        const ext = fnames.slice(start, end);
+        if(ext == "docx" || ext == ".doc"){
+            if(matric.search(/CPE/i) > -1){
+                fname = "CPE Time-Table for the Semester.docx";
+                fname2 = "CPE Time-Table for the Semester.doc";
+            }else if(matric.search(/CVE/i) > -1){
+                fname = "CVE Time-Table for the Semester.docx";
+                fname2 = "CVE Time-Table for the Semester.doc";
+            }else if(matric.search(/EEE/i) > -1){
+                fname = "EEE Time-Table for the Semester.docx";
+                fname2 = "EEE Time-Table for the Semester.doc";
+            }else if(matric.search(/MEE/i) > -1){
+                fname = "MEE Time-Table for the Semester.docx";
+                fname2 = "MEE Time-Table for the Semester.doc";
+            }
+            if(fnames == fname || fnames == fname2){
+                $("#update").removeClass('disable');
+                $("#format").hide();
+                $("#name").hide();
+            }else{
+                $("#update").addClass('disable');
+                $("#name").show();
+                $("#format").hide();
+            }
+        }else{
+            $("#update").addClass('disable');
+            $("#format").show();
+            $("#name").hide();
+        }
+    };
+});

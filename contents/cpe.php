@@ -121,7 +121,7 @@
     </style>
 </head>
 <body>
-<form action="../assets/php/cpe_update.php" method="POST" id="form">
+<form action="../assets/php/cpe_update.php" method="POST" id="form" enctype="multipart/form-data">
     <div class="pagewrapper animate__animated animate__slower" id="pagewrapper">
         <div class="view" id="view">
             <!-- -------------------------------------- Navbar Section Starts Here -------------------------------------- -->
@@ -230,7 +230,7 @@
         
         <!-- -------------------------------------- Announcement Section Starts Here -------------------------------------- -->
         <div class="announcement hidden animate__animated animate__slower" id="announcement">
-            <h2>Announcement</h2>
+            <h2>Announcements</h2>
             <div> 
 
             </div>
@@ -336,6 +336,13 @@
                     <input type="number" name="nrow" id="nrow" style="display: none;">
                     <button class="download"><a href="../assets/files/CPE Time-Table for the Semester.docx" download="Time-Table for the Semester">Download Word</a></button>
                 </div>
+                <div id="fup" class="update">
+                    <input type="text" style="display: none;" id="matric" value="<?php echo $matric ?>">
+                    <input type="file" name="timetable" id="time_table">
+                    <i class="ferror" id="large">File must be less than or equal to 100kb</i>
+                    <i class="ferror" id="format">Only .doc or .docx is allowed</i>
+                    <i class="ferror" id="name">Unacceptable File Name</i>
+                </div>
             </div>
         </div><br>
         <!-- -------------------------------------- Time-Table Section Ends Here -------------------------------------- -->
@@ -417,22 +424,22 @@
         <!-- -------------------------------------- Portal Section Ends Here -------------------------------------- -->
         <p id="maintain">This project was built and is being maintained by <a href="https://taiwojoshua.netlify.app/" target="_blank">Taiwo Joshua</a></p>
     </div>
+    <div id="cupdate">
+        <div>
+            <div>Please, input your password below to proceed</div>
+            <input type="password" name="upass" required id="upass" placeholder="Your Password Here...">
+            <div>
+                <i id="pincorrect">Incorrect Password</i>
+            </div>
+            <div>
+                <input type="checkbox" onclick="myFunction()">
+                <label>Show Password</label>
+            </div>
+            <input type="submit" value="update" id="usubmit" name="usubmit">
+            <div id="close">X</div>
+        </div>
+    </div>
 </form>
-<div id="cupdate">
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
-        <div>Please, input your password below to proceed</div>
-        <input type="password" name="upass" required id="upass" placeholder="Your Password Here...">
-        <div>
-            <i id="pincorrect">Incorrect Password</i>
-        </div>
-        <div>
-            <input type="checkbox" onclick="myFunction()">
-            <label>Show Password</label>
-        </div>
-        <input type="submit" value="update" id="usubmit" name="usubmit">
-        <div id="close">X</div>
-    </form>
-</div>
     <script src="../assets/js/jquery.js"></script>
     <script src="../assets/js/sweetalert.min.js"></script>
     <script>
@@ -536,13 +543,13 @@
             document.getElementById('prev').innerHTML = prev;
             document.getElementById('now').innerHTML = now;
             document.getElementById('next').innerHTML = next;
-            if(iprev == 10 || today == "Saturday" || today == "Sunday"){
+            if(iprev == 10 || today == "Saturday" || today == "Sunday" || prev == ""){
                 document.getElementById('prev').innerHTML = "None";
             };
-            if(inext == 10 || today == "Saturday" || today == "Sunday"){
+            if(inext == 10 || today == "Saturday" || today == "Sunday" || next == ""){
                 document.getElementById('next').innerHTML = "None";
             };
-            if(inow == 10 || today == "Saturday" || today == "Sunday"){
+            if(inow == 10 || today == "Saturday" || today == "Sunday" || now == ""){
                 document.getElementById('now').innerHTML = "None";
             };
             if(prevHour == -1){
@@ -659,18 +666,5 @@
         echo    '<script>
                     ccode();
                  </script>';
-    }
-    if(isset($_POST['usubmit'])){
-        $upass = $_POST['upass'];
-        if(password_verify($upass, $password)){
-            echo    '<script>
-                        document.getElementById("form").submit();
-                    </script>';
-        }else{
-            echo    '<script>
-                        document.getElementById("cupdate").style.display = "flex";
-                        document.getElementById("pincorrect").style.display = "block";
-                    </script>';
-        }
     }
 ?>
