@@ -334,7 +334,7 @@
                 </div>
                 <div id="downloadwrapper">
                     <input type="number" name="nrow" id="nrow" style="display: none;">
-                    <button class="download"><a href="../assets/files/EEE Time-Table for the Semester.docx" download="Time-Table for the Semester">Download Word</a></button>
+                    <button class="download"><a href="../assets/files/EEE Time-Table for the Semester.docx" download="Time-Table for the Semester">Download File</a></button>
                 </div>
                 <div id="fup" class="update">
                     <input type="text" style="display: none;" id="matric" value="<?php echo $matric ?>">
@@ -427,7 +427,7 @@
     <div id="cupdate">
         <div>
             <div>Please, input your password below to proceed</div>
-            <input type="password" name="upass" required id="upass" placeholder="Your Password Here...">
+            <input type="password" name="upass" autocomplete="new-password" required id="upass" placeholder="Your Password Here...">
             <div>
                 <i id="pincorrect">Incorrect Password</i>
             </div>

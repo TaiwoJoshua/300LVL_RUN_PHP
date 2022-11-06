@@ -162,7 +162,7 @@
                     <input type="text" id="matric" required name="matric" value="<?php echo $matric ?>" placeholder="Your Matric No. here...">
                     <i id="empty">Please input your matric number</i>
                     <i id="incorrect">Invalid Matric No. Try again</i>
-                    <input type="password" name="password" id="password" placeholder="Your Password here...">
+                    <input type="password" name="password" id="password" placeholder="Your Password here..." autocomplete="new-password">
                     <div id="showwrapper">
                         <div>
                             <i id="pincorrect"><?php echo $loginmsg?></i>
